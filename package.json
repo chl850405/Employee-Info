@@ -1,0 +1,28 @@
+{
+  "name": "employee-info",
+  "version": "1.0.0",
+  "description": "AS A manager I WANT to generate a webpage that displays my team's basic info SO THAT I have quick access to their emails and GitHub profiles",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chl850405/Employee-Info.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chl850405/Employee-Info/issues"
+  },
+  "homepage": "https://github.com/chl850405/Employee-Info#readme"
+}
