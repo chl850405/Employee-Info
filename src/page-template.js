@@ -17,9 +17,13 @@
       </head>
       <body>
 
-      <div class="container-fluid bg-danger text-white text-center d-flex justify-content-evenly align-items-center" style="height: 100px">
+      
+      <div class="container-fluid d-flex bg-danger text-white" style="height: 100px">
+        <div class="row justify-content-evenly align-self-center mx-auto">
         <h1> My Team </h1>
+        </div>
       </div>
+      
       
       <div class="container d-flex justify-content-around"
 
