@@ -1,4 +1,4 @@
-  const generatePage = (name, position, id, email, github, school, officeNumber) => {
+  const generatePage = () => {
   return `
   <!doctype html>
   <html lang="en">
@@ -25,19 +25,8 @@
       
       <div class="container d-flex flex-wrap">
 
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <div class="card-top bg-primary">
-            <h5 class="card-title">${name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${position}</h6>
-            <ul class="list-group list-group-flush">
-            </div>
-              <li class="list-group-item">ID:${id}</li>
-              <li class="list-group-item">Email:${email}</li>
-              <li class="list-group-item">${github} ${school} ${officeNumber}/li>
-            </ul>
-        </div>
       </div>
+
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
