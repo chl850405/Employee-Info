@@ -39,6 +39,6 @@ const writeFile = fileContent => {
 // }
 
 module.exports = {
-    writeFile: writeFile,
+    writeFile: writeFile
     
 };
