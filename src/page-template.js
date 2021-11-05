@@ -1,4 +1,5 @@
-  const generatePage = () => {
+  const generatePage = (employeeData) => {
+    console.log(employeeData)
   return `
   <!doctype html>
   <html lang="en">
@@ -24,6 +25,8 @@
       </div>
       
       <div class="container d-flex flex-wrap">
+
+      
 
       </div>
 

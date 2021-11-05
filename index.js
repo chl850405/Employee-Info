@@ -14,12 +14,14 @@ const promptManager = () => {
 
 return inquirer
 .prompt([
+
 {
     type: 'list',
     name: 'role',
     message: "Please choose your employee's role",
-    choices: ['Manager', 'other']
+    choices: [Manager]
     },
+
 
 {
     type: 'input',
@@ -64,6 +66,7 @@ return inquirer
         type:'input',
         name:'office',
         message:'What is the managers office number? (Required)',
+        when: (input) => input.role === "Manager",
         validate: officeInput=> {
             if (officeInput) {
             return true;
@@ -92,7 +95,7 @@ return inquirer
     type: 'list',
     name: 'role',
     message: "Please choose your employee's role",
-    choices: ['Engineer', 'Intern']
+    choices: [Engineer, Intern]
     },
 {
 type: 'input',
@@ -111,8 +114,8 @@ validate: nameInput => {
 type: 'input',
 name: 'id',
 message: "Please enter the employee's ID.",
-validate: nameInput => {
-    if  (isNaN(nameInput)) {
+validate: idInput => {
+    if  (isNaN(idInput)) {
         console.log ("Please enter the employee's ID!")
         return false; 
     } else {
@@ -138,8 +141,8 @@ type: 'input',
 name: 'github',
 message: "Please enter the employee's github username.",
 when: (input) => input.role === "Engineer",
-validate: nameInput => {
-    if (nameInput ) {
+validate: githubInput => {
+    if (githubInput ) {
         return true;
     } else {
         console.log ("Please enter the employee's github username!")
@@ -151,8 +154,8 @@ type: 'input',
 name: 'school',
 message: "Please enter the intern's school",
 when: (input) => input.role === "Intern",
-validate: nameInput => {
-    if (nameInput) {
+validate: schoolInput => {
+    if (schoolInput) {
         return true;
     } else {
         console.log ("Please enter the intern's school!")
