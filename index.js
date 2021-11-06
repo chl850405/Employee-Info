@@ -3,6 +3,7 @@ const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
+const role = (Employee , Engineer, Intern, Manager)
 
 const inquirer = require("inquirer");
 const fs = require('fs');
@@ -169,14 +170,6 @@ const promptManager = () => {
     ])
     }
 
-
-const name = getName();
-const id = getid();
-const email = getEmail();
-const role = getRole();
-const officeNumber = mgr.officeNumber;
-const github = getGitHub();
-const school = getSchool();
     if (role === "Manager") {
         Employee = new Manager (role, name, id, email, officeNumber)
     
@@ -232,12 +225,12 @@ const school = getSchool();
     
     promptManager()
         .then(promptEmployee)
-        .then(employeeData => {
-            addEmployeeData.employees.push(employeeData);
-                if (employeeData.confirmAddemployee) {
-                return promptEmployee(employeeData);
+        .then(addEmployeeData => {
+            promptEmployee.employees.push(addEmployeeData);
+                if (addEmployeeData.confirmAddemployee) {
+                return promptEmployee(addEmployeeData);
             } else {
-                return employeeData;
+                return addEmployeeData;
             }
             })
             .then(pageHTML => {
@@ -246,4 +239,4 @@ const school = getSchool();
                 .catch(err => {
                     console.log(err);
                     });
-        return generatePage(employeeData);
+        return generatePage();
