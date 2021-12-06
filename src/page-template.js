@@ -1,4 +1,5 @@
-  const generatePage = (name, position, id, email, github, school, officeNumber) => {
+  const generatePage = (employeeData) => {
+    console.log(employeeData)
   return `
   <!doctype html>
   <html lang="en">
@@ -11,72 +12,24 @@
       <!-- Bootstrap CSS -->
       <script src="https://kit.fontawesome.com/12ce71a7d2.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="./css/style.css>
+      <link rel="stylesheet" href="./css/style.css">
 
       <title>My Team</title>
       </head>
       <body>
 
-      <div class="container-fluid bg-danger text-white text-center d-flex justify-content-evenly align-items-center" style="height: 100px">
+      <div class="container-fluid d-flex bg-danger text-white" style="height: 100px">
+        <div class="row justify-content-evenly align-self-center mx-auto">
         <h1> My Team </h1>
+        </div>
       </div>
       
-      <div class="container d-flex justify-content-around"
+      <div class="container d-flex flex-wrap">
 
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <div class="card-top bg-primary">
-            <h5 class="card-title">${name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${position}</h6>
-            <ul class="list-group list-group-flush">
-            </div>
-              <li class="list-group-item">ID:${id}</li>
-              <li class="list-group-item">Email:${email}</li>
-              <li class="list-group-item">${github} ${school} ${officeNumber}</li>
-            </ul>
-        </div>
+      
+
       </div>
 
-      <div class="card" style="width: 18rem;">
-      <div class="card-body">
-          <div class="card-top bg-primary">
-          <h5 class="card-title">${name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">${position}</h6>
-          <ul class="list-group list-group-flush">
-          </div>
-            <li class="list-group-item">ID:${id}</li>
-            <li class="list-group-item">Email:${email}</li>
-            <li class="list-group-item">${github} ${school} ${officeNumber}</li>
-          </ul>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <div class="card-top bg-primary">
-        <h5 class="card-title">${name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${position}</h6>
-        <ul class="list-group list-group-flush">
-        </div>
-          <li class="list-group-item">ID:${id}</li>
-          <li class="list-group-item">Email:${email}</li>
-          <li class="list-group-item">${github} ${school} ${officeNumber}</li>
-        </ul>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-  <div class="card-body">
-      <div class="card-top bg-primary">
-      <h5 class="card-title">${name}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">${position}</h6>
-      <ul class="list-group list-group-flush">
-      </div>
-        <li class="list-group-item">ID:${id}</li>
-        <li class="list-group-item">Email:${email}</li>
-        <li class="list-group-item">${github} ${school} ${officeNumber}</li>
-      </ul>
-  </div>
-</div>
-      </div>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -84,6 +37,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       </body>
   </html> 
+  
   `;
   };
 
