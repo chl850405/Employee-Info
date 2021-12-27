@@ -1,14 +1,19 @@
-const Intern = require("./lib/Intern")
+const Intern = require("../lib/Intern");
 
-test('creates intern object', () => {
+test("Enter school via constructor", () => {
+  const testVal = "MIT";
+  const employee = new Intern("Foo", 1, "test@test.com", testVal);
+  expect(employee.school()).toEqual(testVal);
+});
 
-    const intern = new Intern("name, id, email, school");
+test('getRole() should return "Intern"', () => {
+  const testVal = "Engineer";
+  const employee = new Intern("Foo", 1, "test@test.com", "MIT");
+  expect(employee.getRole()).toEqual(testVal);
+});
 
-    expect(intern.name).toEqual(expect.any(String))
-
-    expect(intern.id).toEqual(expect.any(String))
-
-    expect(intern.email).toEqual(expect.any(String))
-
-    expect(intern.school).toEqual(expect.any(String))
+test("Obtain school via getSchool", () => {
+  const testVal = "MIT";
+  const employee = new Intern("Foo", 1, "test@test.com", testVal);
+  expect(employee.getSchool()).toEqual(testVal);
 });
