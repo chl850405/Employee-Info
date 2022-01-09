@@ -79,7 +79,7 @@ const promptManager = () => {
       employees.push(manager);
       employees.push(answers.managerId);
       //initiates createTeam() function
-      createTeam();
+      return createTeam();
     });
 };
 
@@ -123,6 +123,7 @@ const createTeam = () => {
 
 //add engineer
 function addEngineer() {
+  console.log('engineer');
   inquirer
     .prompt([
       {
@@ -171,17 +172,18 @@ function addEngineer() {
       },
     ]).then((answers) => {
       const engineer = new Engineer(
-        answers.engineerName,
-        answers.engineerId,
-        answers.engineerEmail,
-        answers.engineerGithub
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.github
       );
+      console.log(engineer);
       employees.push(engineer);
       employees.push(answers.engineerId);
-
+      
+      createTeam();
     });
-    //initiates createTeam() function
-    createTeam();
+   
 }
 
 //add intern
@@ -236,17 +238,17 @@ function addIntern() {
     //new Intern includes the answers from above prompts
     .then((answers) => {
       const intern = new Intern(
-        answers.internName,
-        answers.internId,
-        answers.internEmail,
-        answers.internSchool
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.school
       );
       employees.push(intern);
       employees.push(answers.internId);
-    });
-    //initiates createTeam() function
+
+      //initiates createTeam() function
       createTeam();
+    });
 }
 //initiates promptManager() function
 promptManager()
-
