@@ -71,10 +71,10 @@ const promptManager = () => {
     ])
     .then((answers) => {
       const manager = new Manager(
-        answers.managerName,
-        answers.managerId,
-        answers.managerEmail,
-        answers.managerOfficeNumber
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.office
       );
       employees.push(manager);
       employees.push(answers.managerId);
@@ -183,7 +183,6 @@ function addEngineer() {
       
       createTeam();
     });
-   
 }
 
 //add intern
