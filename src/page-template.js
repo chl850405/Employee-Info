@@ -1,97 +1,49 @@
-const myTeam = () => {
+class PageTmpl {
+  constructor(data) {
+    this.employees = data;
+  }
   
-  function managerHTML(name, role, id, email, office) {
-  return `<div class="employee employee-card" style="width: 18rem">
+  myTeam(employee) {
+    return `<div class="employee employee-card" style="width: 18rem">
   <div class="cardHeader text-white text-center bg-primary">
-    <h2 class="title h6">${name}</h2>
-    <h3 class="title h6"><i class="fas fa-glasses mr-2"></i>${role}</h3>
+    <h2 class="title h6">${employee.name}</h2>
+    <h3 class="title h6"><i class="fas fa-glasses mr-2"></i>${employee.getRole()}</h3>
   </div>
   <div class="card-body border">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item id">ID:${id}</li>
-      <li class="list-group-item email">Email:<a href="mailto:${email}"></a></li>
-      <li class="list-group-item office">Office number:${office}</li>
+      <li class="list-group-item id">ID:${employee.id}</li>
+      <li class="list-group-item email">Email:<a href="mailto:${employee.email}">${employee.email}</a></li>
+      ${employee.office ? `<li class="list-group-item office">Office number:${employee.office}</li>` : ""}
+      ${employee.github ? `<li class="list-group-item github ">Github: <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a></li>` : ""}
+      ${employee.school ? `<li class="list-group-item school">School:${employee.school}</li>` : ""}
     </ul>
   </div>
   </div>
   `;
-}
-//create the html for engineers
-function engineerHTML(name, role, id, email, github){
-  return `<div class="employee employee-card" style="width: 18rem">
-  <div class="cardHeader text-white text-center bg-primary">
-    <h2 class="title h6">${name}</h2>
-    <h3 class="title h6"><i class="fas fa-glasses mr-2"></i>${role}</h3>
-  </div>
-  <div class="card-body border">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item id">ID:${id}</li>
-      <li class="list-group-item email">Email:<a href="mailto:${email}"></a></li>
-      <li class="list-group-item github">Github: github.com/${github}" target="_blank" 
-    </ul>
-  </div>
-  </div>
-  `}
-//create the html for interns
-function internHTML(name, role, id, email, school) {
-  return `<div class="employee employee-card" style="width: 18rem">
-  <div class="cardHeader text-white text-center bg-primary">
-    <h2 class="title h6">${name}</h2>
-    <h3 class="title h6"><i class="fas fa-glasses mr-2"></i>${role}</h3>
-  </div>
-  <div class="card-body border">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item id">ID:${id}</li>
-      <li class="list-group-item email">Email:<a href="mailto:${email}"></a></li>
-      <li class="list-group-item school">School:${school}</li>
-    </ul>
-  </div>
-  </div>
-`};
-
-generateHTML = (data) => {
-  // array for cards 
-  pageArray = []; 
-
-  for (let i = 0; i < data.length; i++) {
-      const employee = data[i];
-      const role = employee.getRole(); 
-
-
-      // call manager function
-      if (role === 'Manager') {
-          const managerCard = managerHTML();
-
-          pageArray.push(managerCard);
-      }
-
-      // call engineer function
-      if (role === 'Engineer') {
-        const engineerCard = engineerHTML();
-    
-          pageArray.push(engineerCard);
-      }
-
-      // call intern function 
-      if (role === `'${engineer}', 'name', 'role', 'id', 'email', 'school'`) {
-          const internCard = internHTML();
-
-          pageArray.push(internCard);
-      }
-
   }
-      // joining strings 
-      const employeeCards = pageArray.join('')
-
-      //return to generated page
-      const generateTeam = generateTeam(employeeCards); 
-      return generateTeam;
-}
-}
-// generate html page
-module.exports = (myTeam) => {
-  return `
-<!DOCTYPE html>
+  
+  generateHTML() {
+    // array for cards
+    let cardArray = [];
+    
+    for (let i = 0; i < this.employees.length; i++) {
+      const employee = this.employees[i];
+      console.log(this.employees);
+      console.log(employee);
+      // const role = employee.getRole();
+      const managerCard = this.myTeam(employee);
+      cardArray.push(managerCard);
+    }
+    // joining cards
+    const employeeCards = cardArray.join('')
+    
+    //return to generated page
+    return this.pageStruct(employeeCards);
+  }
+  
+  pageStruct(innerHtml) {
+    return `
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -113,7 +65,7 @@ module.exports = (myTeam) => {
       <div class="container">
           <div class="row justify-content-center" id="team-cards">
               <!--Team Cards-->
-              ${myTeam}
+              ${innerHtml}
           </div>
       </div>
   </main>
@@ -124,6 +76,8 @@ module.exports = (myTeam) => {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </html>
 `;
-};
+  }
+}
 
-
+// generate html page
+module.exports = PageTmpl;

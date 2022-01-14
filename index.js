@@ -9,7 +9,7 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const distPath = path.join(OUTPUT_DIR, "index.html");
 
-generatePage = require("./src/page-template.js");
+const PageTmpl = require("./src/page-template.js");
 
 const employees = [];
 
@@ -77,7 +77,6 @@ const promptManager = () => {
         answers.office
       );
       employees.push(manager);
-      employees.push(answers.managerId);
       //initiates createTeam() function
       return createTeam();
     })
@@ -105,16 +104,14 @@ const createTeam = () => {
       } else if (role === "Intern") {
         //initiates addIntern() function when selected
         addIntern();
-      } 
-       //Exit the inquirer
-      else {
+      } else { //Exit the inquirer
         //writes the html
-        const html = generateHTML(employees);
+        const html = new PageTmpl(employees).generateHTML();
+    
         fs.writeFile(distPath, html, function (err) {
             if (err) {
                 return console.log(err);
             };
-
         });
         console.log("Team successfully created!");
       }
@@ -177,10 +174,7 @@ function addEngineer() {
         answers.email,
         answers.github
       );
-      console.log(engineer);
       employees.push(engineer);
-      employees.push(answers.engineerId);
-      
       createTeam();
     });
 }
@@ -243,12 +237,9 @@ function addIntern() {
         answers.school
       );
       employees.push(intern);
-      employees.push(answers.internId);
-
       //initiates createTeam() function
       createTeam();
     });
 }
 //initiates promptManager() function
 promptManager()
-myTeam.generateHTML(employees)
