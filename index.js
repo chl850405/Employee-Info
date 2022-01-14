@@ -9,7 +9,7 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "dist");
 const distPath = path.join(OUTPUT_DIR, "index.html");
 
-const generatePage = require("./src/page-template.js");
+generatePage = require("./src/page-template.js");
 
 const employees = [];
 
@@ -80,7 +80,7 @@ const promptManager = () => {
       employees.push(answers.managerId);
       //initiates createTeam() function
       return createTeam();
-    });
+    })
 };
 
 const createTeam = () => {
@@ -109,7 +109,7 @@ const createTeam = () => {
        //Exit the inquirer
       else {
         //writes the html
-        const html = generatePage();
+        const html = generateHTML(employees);
         fs.writeFile(distPath, html, function (err) {
             if (err) {
                 return console.log(err);
@@ -251,3 +251,4 @@ function addIntern() {
 }
 //initiates promptManager() function
 promptManager()
+myTeam.generateHTML(employees)
