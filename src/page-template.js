@@ -7,15 +7,15 @@ class PageTmpl {
     return `<div class="employee employee-card" style="width: 18rem">
   <div class="cardHeader text-white text-center bg-primary">
     <h2 class="title h6">${employee.name}</h2>
-    <h3 class="title h6"><i class="fas fa-glasses mr-2"></i>${employee.getRole()}</h3>
+    <h3 class="title h6">${employee.getRole()}</h3>
   </div>
   <div class="card-body border">
     <ul class="list-group list-group-flush">
       <li class="list-group-item id">ID:${employee.id}</li>
       <li class="list-group-item email">Email:<a href="mailto:${employee.email}">${employee.email}</a></li>
-      ${employee.office ? `<li class="list-group-item office">Office number:${employee.office}</li>` : ""}
-      ${employee.github ? `<li class="list-group-item github ">Github: <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a></li>` : ""}
-      ${employee.school ? `<li class="list-group-item school">School:${employee.school}</li>` : ""}
+      ${employee.office ? `<li class="list-group-item office"><i class="fas fa-mug-hot mr-2"></i>Office number:${employee.office}</li>` : ""}
+      ${employee.github ? `<li class="list-group-item github "><i class="fas fa-glasses mr-2"></i>Github: <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a></li>` : ""}
+      ${employee.school ? `<li class="list-group-item school"><i class="fas fa-user-graduate mr-2"></i>School:${employee.school}</li>` : ""}
     </ul>
   </div>
   </div>
